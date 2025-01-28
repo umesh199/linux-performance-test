@@ -1,0 +1,6 @@
+Rank	System	CPU Model	Frequency (GHz)	Memory Size (GB)	Memory Speed (MT/sec)	Number of Cores	Performance Notes
+1	system2	Gold 6334	3.6	503	3200	32	Best due to high CPU frequency, sufficient memory, and maximum cores
+2	system1	Gold 6326	2.9	2015	3200	32	Excellent memory size compensates for lower CPU frequency
+3	system4	Gold 6326	2.9	1007	3200	32	Decent memory size and adequate CPU for multi-job workloads
+4	system5	Gold 6334	3.6	503	3200	16	Limited by fewer cores, despite high frequency
+5	system3	Gold 6346	3.1	503	3200	32	Balanced configuration but slightly lower performance than
