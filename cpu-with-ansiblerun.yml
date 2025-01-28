@@ -1,0 +1,20 @@
+- name: Measure CPU Performance on Target Servers
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install sysbench if not present
+      ansible.builtin.yum:
+        name: sysbench
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Run sysbench CPU test
+      shell: |
+        sysbench cpu --cpu-max-prime=20000 run | grep -E 'total time|events per second'
+      register: sysbench_output
+
+    - name: Save sysbench results to a facts file
+      copy:
+        content: "{{ inventory_hostname }}: {{ sysbench_output.stdout.strip() }}"
+        dest: /tmp/sysbench_cpu_results.txt
+      delegate_to: localhost
